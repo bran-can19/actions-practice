@@ -1,0 +1,9 @@
+name:Hello World Actions
+on: [push]
+jobs:
+    hello-World-Actions
+        runs-on: ubuntu-lastet
+        steps:
+        - name: Hello World
+        -run: echo "Hello World"
+        - name: Hello World Again
