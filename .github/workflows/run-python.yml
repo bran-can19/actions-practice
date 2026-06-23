@@ -15,8 +15,7 @@ jobs:
       - name: Ejecutar script
         run: python app.py
 
-         runs-python-script:
-         runs-javascript-script:
+  runs-javascript-script:
     runs-on: ubuntu-latest
     steps:
       - name: Inicio
