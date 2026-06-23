@@ -1,0 +1,43 @@
+name: Triggers
+run-name: Learning to use differents Triggers
+on:
+  push:
+    branches: 
+      - 'main'
+      - 'aprendiendo-github-actions'
+  pull_request:
+    types: [opened, closed]
+  issues:
+   types: [opened, edited, milestoned]
+  schedule:
+     - cron: "30 16 * * 5"
+  workflow_dispatch:
+    inputs:
+      lenguaje_favorito:
+        description: 'Lenguaje favorito'
+        default: Python
+        required: true
+        type: choice
+        options:
+        - Python
+        - JavaScript
+        - Go
+      nombre:
+        description: 'Tu nombre'
+        required: true
+        default: Francisco
+        type: string
+jobs:
+  test-triggers:
+    if: ${{ github.event_name != 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The Job was triggered by one of the triggers configured 🚀"
+      - run: python --version
+  test-triggers-manual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar nombre
+        run: echo "${{ inputs.nombre }}"
+      - name: Mostrar lenguaje
+        run: echo "${{ inputs.lenguaje_favorito }}"
