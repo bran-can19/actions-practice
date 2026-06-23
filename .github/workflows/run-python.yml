@@ -1,7 +1,5 @@
-name: Run Scripts
-
+name: Run Python Script
 on: [push]
-
 jobs:
   runs-python-script:
     runs-on: ubuntu-latest
